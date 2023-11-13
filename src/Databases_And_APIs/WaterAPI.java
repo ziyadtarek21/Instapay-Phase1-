@@ -4,7 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WaterAPI {
-    static Map<String, Double> counterNumbers = new HashMap<>() {
+    /*
+     * احزر حنيكه من ريمو تم جفل counter numbers عباره عن map
+     * */
+    private static Map<String, Double> counterNumbers = new HashMap<>() {
         {
             put("123", 50.2);
             put("45", 40.3);

@@ -4,7 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GasAPI {
-    static Map<String, Double> counterNumbers = new HashMap<>() {
+
+    /*
+     * احذر حنيكه من ريمو تم جفل counter numbers عباره عن map
+     * */
+    private static Map<String, Double> counterNumbers = new HashMap<>() {
         {
             put("123", 9874.2);
             put("45", 3215.23);
