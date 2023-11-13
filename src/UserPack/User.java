@@ -41,5 +41,4 @@ public class User {
     public boolean authenticate(String username, String password){
         return true;
     }
-
 }
