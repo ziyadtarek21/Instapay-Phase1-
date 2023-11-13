@@ -4,6 +4,11 @@ public abstract class Account {
     private String username;
     private String password;
     private double balance;
+
+    public User getUser() {
+        return u;
+    }
+
     public User u;
 
     public Account(String username, String password, double balance) {
@@ -25,7 +30,8 @@ public abstract class Account {
         this.balance = balance;
     }
 
-    public void setU(User u) {
+    public void setUser(User u) {
+
         this.u = u;
     }
 

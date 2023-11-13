@@ -5,6 +5,15 @@ public class User {
     private String lastName;
     private String phoneNumber;
     private String ssn;
+    private Account Acc;
+
+    public Account getAcc() {
+        return Acc;
+    }
+
+    public void setAcc(Account acc) {
+        Acc = acc;
+    }
 
     public User(String firstName, String lastName, String phoneNumber, String ssn) {
         this.firstName = firstName;
