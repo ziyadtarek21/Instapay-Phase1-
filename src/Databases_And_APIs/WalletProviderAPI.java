@@ -17,6 +17,16 @@ public class WalletProviderAPI {
         }
     };
 
+
+
+    public static double returnBalance(String phoneNumber) {
+        return PhoneNumbers.get(phoneNumber);
+    }
+
+    public static void setBalance(String phoneNumber, double balance) {
+        PhoneNumbers.put(phoneNumber, balance);
+    }
+
     public static boolean verifyPhoneNumber(String accountNumber) {
         return PhoneNumbers.containsKey(accountNumber);
     }

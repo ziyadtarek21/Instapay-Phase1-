@@ -6,17 +6,25 @@ import java.util.Map;
 public class BankAPI {
     private static Map<String, Double> bankAccountNumbers = new HashMap<>() {
         {
-            put("1", 456.1);
-            put("2", 321.0);
-            put("3", 56465498.5);
-            put("4", 53421.0);
-            put("5", 0.0);
-            put("6", 6646.0);
+            put("1234567891011121", 456.1);
+            put("2345678910111213", 321.0);
+            put("3456789101112111", 56465498.5);
+            put("4568976464513545", 53421.0);
+            put("5646843213715344", 0.0);
+            put("6546464646546448", 6646.0);
         }
     };
 
     public static boolean checkBankAccount(String accountNumber) {
         return bankAccountNumbers.containsKey(accountNumber);
+    }
+
+    public static double returnBalance(String accountNumber) {
+        return bankAccountNumbers.get(accountNumber);
+    }
+
+    public static void setBalance(String accountNumber, double balance) {
+        bankAccountNumbers.put(accountNumber, balance);
     }
     /*
      * احذر حنيكه من ريمو تم اضافه function
@@ -29,4 +37,6 @@ public class BankAPI {
         System.out.println("this account doesn't exist!");
         return false;
     }
+
+
 }

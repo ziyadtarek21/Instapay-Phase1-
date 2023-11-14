@@ -1,5 +1,7 @@
 package UserPack;
 
+import Databases_And_APIs.WalletProviderAPI;
+
 public class WalletAcc extends Account {
     private String Serviceprovider;
     public void setServiceprovider(String serviceprovider) {
@@ -10,13 +12,14 @@ public class WalletAcc extends Account {
         return Serviceprovider;
     }
 
-    public WalletAcc(String username, String password, double balance) {
-        super(username, password, balance);
+    public WalletAcc(String username, String password, double balance, User user) {
+        super(username, password, balance, user);
     }
 
     @Override
     public void addMoney(double amount) {
-     this.setBalance(amount);
+        this.setBalance(amount);
+        WalletProviderAPI.setBalance(getUser().getPhoneNumber(), getBalance());
     }
 
     @Override
@@ -24,6 +27,7 @@ public class WalletAcc extends Account {
         if(this.getBalance()>=amount){
             double newmon=this.getBalance()-amount;
             this.addMoney(newmon);
+            WalletProviderAPI.setBalance(getUser().getPhoneNumber(), getBalance());
             return true;
         }
         return false;

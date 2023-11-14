@@ -11,10 +11,11 @@ public abstract class Account {
 
     public User u;
 
-    public Account(String username, String password, double balance) {
+    public Account(String username, String password, double balance, User user) {
         this.username = username;
         this.password = password;
         this.balance = balance;
+        this.u = user;
     }
 
 

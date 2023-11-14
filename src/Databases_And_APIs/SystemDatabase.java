@@ -12,17 +12,20 @@ public class SystemDatabase {
 
     SystemDatabase(){
         User user1 = new User("remon", "atef", "01091820070","654");
-        user1.setAcc(new BankAcc("RemoElPremo", "123456", 98465.5));
-        users.put("remo", user1);
+        user1.setAcc(new BankAcc("RemoElPremo", "123456", 98465.5, user1));
+        users.put("RemoElPremo", user1);
 
         User user2 = new User("ahmed", "mohamed", "97612","451320");
-        user2.setAcc(new BankAcc("idk", "123456", 6541.45));
-        users.put("ahmed", user2);
+        user2.setAcc(new BankAcc("idk", "123456", 6541.45, user2));
+        users.put("idk", user2);
 
 
     }
 
-    static void addUser(User user){
+    public static boolean checUsername(String username) {
+        return users.containsKey(username);
+    }
+    public static void addUser(User user){
         users.put(user.getAcc().getUsername(), user);
     }
 
