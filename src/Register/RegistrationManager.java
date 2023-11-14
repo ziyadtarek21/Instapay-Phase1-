@@ -62,7 +62,7 @@ public class RegistrationManager {
                 System.out.println("Registration aborted");
                 return false;
             }
-            if(SystemDatabase.checUsername(username)){
+            if(SystemDatabase.checkUsername(username)){
                 System.out.println("Username already exist. Please type something else or enter 1 to cancel");
             }
             else {

@@ -22,7 +22,7 @@ public class SystemDatabase {
 
     }
 
-    public static boolean checUsername(String username) {
+    public static boolean checkUsername(String username) {
         return users.containsKey(username);
     }
     public static void addUser(User user){
