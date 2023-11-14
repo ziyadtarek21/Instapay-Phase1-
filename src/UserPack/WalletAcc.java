@@ -19,7 +19,7 @@ public class WalletAcc extends Account {
     @Override
     public void addMoney(double amount) {
         this.setBalance(this.getBalance() + amount);
-        walletProviders.setBalance(getUser().getPhoneNumber(), getBalance() + amount);
+        walletProviders.setBalance(getUser().getPhoneNumber(), getBalance());
     }
 
     @Override

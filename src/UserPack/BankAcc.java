@@ -11,16 +11,14 @@ public class BankAcc extends Account{
 
     @Override
     public void addMoney(double amount) {
-
-        this.setBalance(amount);
+        this.setBalance(this.getBalance() + amount);
         BankAPI.setBalance(cardNumber, getBalance());
     }
 
     @Override
     public boolean deductMoney(double amount) {
         if(this.getBalance()>=amount){
-            double newmon=this.getBalance()-amount;
-            this.addMoney(newmon);
+            this.setBalance(this.getBalance() - amount);
             BankAPI.setBalance(cardNumber, getBalance());
             return true;
         }

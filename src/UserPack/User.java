@@ -37,8 +37,4 @@ public class User {
     public String getSsn() {
         return ssn;
     }
-
-    public boolean authenticate(String username, String password){
-        return true;
-    }
 }
