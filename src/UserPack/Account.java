@@ -18,7 +18,6 @@ public abstract class Account {
         this.u = user;
     }
 
-
     public void setUsername(String username) {
         this.username = username;
     }

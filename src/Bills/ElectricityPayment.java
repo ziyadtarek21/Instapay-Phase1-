@@ -7,8 +7,7 @@ public class ElectricityPayment implements BillPaymentStrategy{
     public void pay(Account account, String countNumber) {
         if(ElectricityAPI.findElectricityCounter(countNumber)){
             if(account.getBalance() >= ElectricityAPI.getAmount(countNumber)){
-                double balance = account.getBalance();
-                account.setBalance(balance - ElectricityAPI.getAmount(countNumber));
+                account.deductMoney(ElectricityAPI.getAmount(countNumber));
                 ElectricityAPI.pay(countNumber);
                 System.out.println("The Payment Has Been Done Successfully!");
             } else{

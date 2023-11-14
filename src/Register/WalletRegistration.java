@@ -2,9 +2,11 @@ package Register;
 
 
 import Databases_And_APIs.SystemDatabase;
-import Databases_And_APIs.WalletProviderAPI;
 import UserPack.Account;
 import UserPack.WalletAcc;
+import walletProviders.CIBWallet;
+import walletProviders.VodafoneWallet;
+import walletProviders.WalletProviders;
 
 import java.util.Scanner;
 
@@ -12,19 +14,40 @@ public class WalletRegistration implements RegistrationStrategy{
     @Override
     public boolean register(Account acc) {
         Scanner scanner = new Scanner(System.in);
+        WalletProviders walletProviders = null;
+
+        System.out.println("Choose your service provider (1 for Vodafone, 2 for CIB):");
+        scanner.nextLine();
+        boolean done = false;
+        do {
+            System.out.println("Choose your service provider (1 for Vodafone, 2 for CIB):");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    walletProviders = new VodafoneWallet(acc.getUser().getPhoneNumber());
+                    done = true;
+                    break;
+                case 2:
+                    walletProviders = new CIBWallet("CIB" + acc.getUser().getPhoneNumber());
+                    done = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please choose 1 or 2.");
+            }
+        } while (!done);
 
 
-        if(!WalletProviderAPI.verifyPhoneNumber(acc.getUser().getPhoneNumber())){
+        if(!walletProviders.verifyPhoneNumber(acc.getUser().getPhoneNumber())){
             System.out.println("There is no wallet registered on the entered phone number");
             return false;
         }
-        System.out.println("Enter your service Provider");
-        String sProvider = scanner.nextLine();
 
-        double balance = WalletProviderAPI.returnBalance(acc.getUser().getPhoneNumber());
+        double balance = walletProviders.returnBalance(acc.getUser().getPhoneNumber());
         acc.setBalance(balance);
         WalletAcc acc1 = new WalletAcc(acc.getUsername(), acc.getPassword(), balance, acc.getUser());
-        acc1.setServiceprovider(sProvider);
+        acc1.setServiceprovider(walletProviders);
         SystemDatabase.addUser(acc1.getUser());
         return true;
     }

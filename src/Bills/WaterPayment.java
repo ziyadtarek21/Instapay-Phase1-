@@ -9,8 +9,7 @@ public class WaterPayment implements BillPaymentStrategy{
     public void pay(Account account, String countNumber) {
         if(WaterAPI.findWaterCounter(countNumber)){
             if(account.getBalance() >= WaterAPI.getAmount(countNumber)){
-                double balance = account.getBalance();
-                account.setBalance(balance - WaterAPI.getAmount(countNumber));
+                account.deductMoney(WaterAPI.getAmount(countNumber));
                 WaterAPI.pay(countNumber);
                 System.out.println("The Payment Has Been Done Successfully!");
             } else{

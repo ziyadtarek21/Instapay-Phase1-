@@ -9,10 +9,8 @@ public class GasPayment implements BillPaymentStrategy{
     public void pay(Account account, String countNumber) {
         if(GasAPI.findGasCounter(countNumber)){
             if(account.getBalance() >= GasAPI.getAmount(countNumber)){
-                double balance = account.getBalance();
-                account.setBalance(balance - GasAPI.getAmount(countNumber));
+                account.deductMoney(GasAPI.getAmount(countNumber));
                 GasAPI.pay(countNumber);
-
                 System.out.println("The Payment Has Been Done Successfully!");
             } else{
                 System.out.println("There isn't enough money!");

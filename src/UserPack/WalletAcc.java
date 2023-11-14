@@ -1,15 +1,15 @@
 package UserPack;
 
-import Databases_And_APIs.WalletProviderAPI;
+import walletProviders.WalletProviders;
 
 public class WalletAcc extends Account {
-    private String Serviceprovider;
-    public void setServiceprovider(String serviceprovider) {
-        Serviceprovider = serviceprovider;
+    private WalletProviders walletProviders;
+    public void setServiceprovider(WalletProviders walletProviders) {
+        this.walletProviders = walletProviders;
     }
 
-    public String getServiceprovider() {
-        return Serviceprovider;
+    public WalletProviders getServiceprovider() {
+        return this.walletProviders;
     }
 
     public WalletAcc(String username, String password, double balance, User user) {
@@ -18,20 +18,18 @@ public class WalletAcc extends Account {
 
     @Override
     public void addMoney(double amount) {
-        this.setBalance(amount);
-        WalletProviderAPI.setBalance(getUser().getPhoneNumber(), getBalance());
+        this.setBalance(this.getBalance() + amount);
+        walletProviders.setBalance(getUser().getPhoneNumber(), getBalance() + amount);
     }
 
     @Override
     public boolean deductMoney(double amount) {
         if(this.getBalance()>=amount){
-            double newmon=this.getBalance()-amount;
-            this.addMoney(newmon);
-            WalletProviderAPI.setBalance(getUser().getPhoneNumber(), getBalance());
+            double newAmount=this.getBalance()-amount;
+            this.setBalance(newAmount);
+            walletProviders.setBalance(getUser().getPhoneNumber(), newAmount);
             return true;
         }
         return false;
     }
-
-
 }
