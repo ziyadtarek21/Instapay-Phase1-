@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BankAPI {
-    private static Map<String, Double> bankAccountNumbers = new HashMap<>() {
+    private static Map<String, Double> bankAccountNumbers = new HashMap<String, Double>() {
         {
             put("1234567891011121", 456.1);
             put("2345678910111213", 321.0);
