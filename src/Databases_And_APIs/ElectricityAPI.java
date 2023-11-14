@@ -7,7 +7,7 @@ public class ElectricityAPI {
     /*
      * احذر حنيكه من ريمو تم جفل counter numbers عباره عن map
      * */
-    private static Map<String, Double> counterNumbers = new HashMap<>() {
+    private static Map<String, Double> counterNumbers = new HashMap<String, Double>() {
         {
             put("123", 120.1);
             put("45", 845.21);
@@ -24,5 +24,8 @@ public class ElectricityAPI {
         return counterNumbers.get(counterNumber);
     }
 
+    public static void pay(String counterNumber){
+        counterNumbers.put(counterNumber, 0.0);
+    }
 
 }

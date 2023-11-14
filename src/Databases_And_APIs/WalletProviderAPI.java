@@ -8,7 +8,7 @@ import java.util.Map;
 public class WalletProviderAPI {
 
 
-     private static Map<String, Double> PhoneNumbers = new HashMap<>() {
+     private static Map<String, Double> PhoneNumbers = new HashMap<String, Double>() {
         {
             put("01091820070", 456.1);
             put("01210203045", 321.0);

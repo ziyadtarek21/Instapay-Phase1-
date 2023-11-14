@@ -8,7 +8,7 @@ public class GasAPI {
     /*
      * احذر حنيكه من ريمو تم جفل counter numbers عباره عن map
      * */
-    private static Map<String, Double> counterNumbers = new HashMap<>() {
+    private static Map<String, Double> counterNumbers = new HashMap<String, Double>() {
         {
             put("123", 9874.2);
             put("45", 3215.23);
@@ -26,5 +26,8 @@ public class GasAPI {
     }
 
 
+    public static void pay(String counterNumber) {
+        counterNumbers.put(counterNumber, 0.0);
+    }
 }
 

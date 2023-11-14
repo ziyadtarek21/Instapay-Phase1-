@@ -7,7 +7,7 @@ public class WaterAPI {
     /*
      * احزر حنيكه من ريمو تم جفل counter numbers عباره عن map
      * */
-    private static Map<String, Double> counterNumbers = new HashMap<>() {
+    private static Map<String, Double> counterNumbers = new HashMap<String, Double>() {
         {
             put("123", 50.2);
             put("45", 40.3);
@@ -25,4 +25,7 @@ public class WaterAPI {
     }
 
 
+    public static void pay(String countNumber) {
+        counterNumbers.put(countNumber, 0.0);
+    }
 }
