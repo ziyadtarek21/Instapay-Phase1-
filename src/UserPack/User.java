@@ -37,4 +37,6 @@ public class User {
     public String getSsn() {
         return ssn;
     }
+
+
 }

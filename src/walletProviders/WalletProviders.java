@@ -1,17 +1,16 @@
 package walletProviders;
 
 
+import Databases_And_APIs.SystemDatabase;
+
 import java.util.HashMap;
 
 public abstract class WalletProviders {
     protected HashMap<String , Double> wallets;
-
-
     public WalletProviders() {
         this.wallets = new HashMap<>();
         initializeData();
     }
-
     abstract void initializeData();
 
     public double returnBalance(String walletNumber) {
@@ -20,6 +19,7 @@ public abstract class WalletProviders {
 
     public void setBalance(String walletNumber, double balance) {
         wallets.put(walletNumber, balance);
+
     }
 
     public boolean verifyPhoneNumber(String walletNumber) {

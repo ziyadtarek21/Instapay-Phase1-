@@ -39,6 +39,7 @@ public class BankRegistration implements RegistrationStrategy{
         acc.setBalance(balance);
         BankAcc acc1 = new BankAcc(acc.getUsername(), acc.getPassword(), balance, acc.getUser());
         acc1.setCardNumber(accountNumber);
+        acc1.getUser().setAcc(acc1);
         SystemDatabase.addUser(acc1.getUser());
         return true;
     }

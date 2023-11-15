@@ -5,10 +5,7 @@ import UserPack.Account;
 import java.util.Scanner;
 
 public class TransferManger {
-    private Transfer transfer;
-    TransferManger(Transfer transfer){
-        this.transfer = transfer;
-    }
+    public Transfer transfer;
 
     void setTransfer(Transfer transfer){
         this.transfer = transfer;
@@ -16,7 +13,7 @@ public class TransferManger {
     /*
     * احذر حنيكه من ريمو تم اضافه parameters ل function manage transfer
     * */
-    void manageTransfer(Account account){
+   public void manageTransfer(Account account){
         Scanner scanner = new Scanner(System.in);
         System.out.println("enter the info of the other account: ");
         String input = scanner.nextLine();

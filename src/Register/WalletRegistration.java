@@ -16,8 +16,7 @@ public class WalletRegistration implements RegistrationStrategy{
         Scanner scanner = new Scanner(System.in);
         WalletProviders walletProviders = null;
 
-        System.out.println("Choose your service provider (1 for Vodafone, 2 for CIB):");
-        scanner.nextLine();
+
         boolean done = false;
         do {
             System.out.println("Choose your service provider (1 for Vodafone, 2 for CIB):");
@@ -48,6 +47,7 @@ public class WalletRegistration implements RegistrationStrategy{
         acc.setBalance(balance);
         WalletAcc acc1 = new WalletAcc(acc.getUsername(), acc.getPassword(), balance, acc.getUser());
         acc1.setServiceprovider(walletProviders);
+        acc1.getUser().setAcc(acc1);
         SystemDatabase.addUser(acc1.getUser());
         return true;
     }
