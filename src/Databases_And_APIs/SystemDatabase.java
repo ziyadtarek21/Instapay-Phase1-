@@ -59,7 +59,8 @@ public class SystemDatabase {
             return users.get(username);
         return null;
     }
-    static Account getAccountByUsername(String username){
+
+    public static Account getAccountByUsername(String username){
         return users.get(username).getAcc();
     }
     boolean checkUsernameAndPassword(String username, String password){

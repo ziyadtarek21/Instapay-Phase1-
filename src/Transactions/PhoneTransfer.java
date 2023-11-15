@@ -1,7 +1,8 @@
 package Transactions;
 
 import UserPack.Account;
-import walletProviders.CIBWallet;
+import walletProviders.EtisalatWallet;
+import walletProviders.OrangeWallet;
 import walletProviders.VodafoneWallet;
 import walletProviders.WalletProviders;
 
@@ -14,8 +15,10 @@ public class PhoneTransfer implements Transfer{
         WalletProviders walletProviders;
         if (info.startsWith("010")){
             walletProviders = new VodafoneWallet(info);
-        }else{
-            walletProviders = new CIBWallet(info);
+        }else if (info.startsWith("011")){
+            walletProviders = new EtisalatWallet(info);
+        }else {
+            walletProviders = new OrangeWallet(info);
         }
         System.out.println("enter the amount of money you want to send: ");
         Scanner scanner = new Scanner(System.in);

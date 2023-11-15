@@ -10,9 +10,6 @@ public class TransferManger {
     void setTransfer(Transfer transfer){
         this.transfer = transfer;
     }
-    /*
-    * احذر حنيكه من ريمو تم اضافه parameters ل function manage transfer
-    * */
    public void manageTransfer(Account account){
         Scanner scanner = new Scanner(System.in);
         System.out.println("enter the info of the other account: ");

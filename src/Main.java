@@ -7,6 +7,10 @@ import Register.RegistrationManager;
 import Transactions.*;
 import UserPack.Account;
 import UserPack.*;
+import walletProviders.EtisalatWallet;
+import walletProviders.OrangeWallet;
+import walletProviders.VodafoneWallet;
+import walletProviders.WalletProviders;
 
 import java.sql.SQLOutput;
 import java.util.HashMap;
@@ -22,7 +26,6 @@ public class Main {
         User currnetuser=null;
         while (true){
             if(!signedIn){
-
                 System.out.println("do you want to sign in or login ?");
                 System.out.println("1.register");
                 System.out.println("2.login ");
@@ -31,7 +34,6 @@ public class Main {
                     RegistrationManager registrationManager = new RegistrationManager();
                     if(registrationManager.doRegister()){
                         System.out.println("Regestration sucssesful , You can LogIn now");
-
                     }
                     else{
                         System.out.println("Regestration failed nigga");
@@ -47,6 +49,16 @@ public class Main {
                         currnetuser=Authentication.login(username,passwrd);
                         signedAcc= currnetuser.getAcc();
                         System.out.println("login sucssesful");
+                        String phoneNumber = currnetuser.getPhoneNumber();
+                        WalletProviders wallet;
+                        if (phoneNumber.startsWith("010")){
+                            wallet = new VodafoneWallet(phoneNumber);
+                        }else if(phoneNumber.startsWith("011")){
+                            wallet = new EtisalatWallet(phoneNumber);
+                        }else {
+                            wallet = new OrangeWallet(phoneNumber);
+                        }
+                        signedAcc.setBalance(wallet.returnBalance(phoneNumber));
                         signedIn=true;
                     }
                     else{

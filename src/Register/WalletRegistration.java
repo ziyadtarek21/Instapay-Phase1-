@@ -4,7 +4,8 @@ package Register;
 import Databases_And_APIs.SystemDatabase;
 import UserPack.Account;
 import UserPack.WalletAcc;
-import walletProviders.CIBWallet;
+import walletProviders.EtisalatWallet;
+import walletProviders.OrangeWallet;
 import walletProviders.VodafoneWallet;
 import walletProviders.WalletProviders;
 
@@ -19,7 +20,7 @@ public class WalletRegistration implements RegistrationStrategy{
 
         boolean done = false;
         do {
-            System.out.println("Choose your service provider (1 for Vodafone, 2 for CIB):");
+            System.out.println("Choose your service provider (1 for Vodafone, 2 for Etisalat, 3 for Orange):");
             int choice = scanner.nextInt();
             scanner.nextLine();
 
@@ -29,7 +30,11 @@ public class WalletRegistration implements RegistrationStrategy{
                     done = true;
                     break;
                 case 2:
-                    walletProviders = new CIBWallet("CIB" + acc.getUser().getPhoneNumber());
+                    walletProviders = new EtisalatWallet(acc.getUser().getPhoneNumber());
+                    done = true;
+                    break;
+                case 3:
+                    walletProviders = new OrangeWallet(acc.getUser().getPhoneNumber());
                     done = true;
                     break;
                 default:
