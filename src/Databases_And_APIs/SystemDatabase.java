@@ -54,7 +54,7 @@ public class SystemDatabase {
         System.out.println("this account doesn't exist!");
         return false;
     }
-    User getUserByUsername(String username){
+    static User getUserByUsername(String username){
         if(users.containsKey(username))
             return users.get(username);
         return null;
@@ -63,7 +63,7 @@ public class SystemDatabase {
     public static Account getAccountByUsername(String username){
         return users.get(username).getAcc();
     }
-    boolean checkUsernameAndPassword(String username, String password){
+    static boolean checkUsernameAndPassword(String username, String password){
         return users.get(username).getAcc().getPassword().equals(password);
     }
 }

@@ -4,9 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ElectricityAPI {
-    /*
-     * احذر حنيكه من ريمو تم جفل counter numbers عباره عن map
-     * */
+
     private static Map<String, Double> counterNumbers = new HashMap<String, Double>() {
         {
             put("123", 120.1);

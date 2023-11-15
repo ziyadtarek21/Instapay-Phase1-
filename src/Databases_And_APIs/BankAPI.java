@@ -26,9 +26,6 @@ public class BankAPI {
     public static void setBalance(String accountNumber, double balance) {
         bankAccountNumbers.put(accountNumber, balance);
     }
-    /*
-     * احذر حنيكه من ريمو تم اضافه function
-     * */
     public static boolean receiveMoney(String accNum, Double amount){
         if(amount >= 0 && checkBankAccount(accNum)){
             bankAccountNumbers.put(accNum, bankAccountNumbers.get(accNum) + amount);

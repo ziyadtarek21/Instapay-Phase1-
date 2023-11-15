@@ -4,9 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WaterAPI {
-    /*
-     * احزر حنيكه من ريمو تم جفل counter numbers عباره عن map
-     * */
+
     private static Map<String, Double> counterNumbers = new HashMap<String, Double>() {
         {
             put("123", 50.2);

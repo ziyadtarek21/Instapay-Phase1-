@@ -4,9 +4,8 @@ import UserPack.User;
 
 public class Authentication {
     public static User login(String userName , String password){
-        SystemDatabase database= new SystemDatabase();
-        if (database.checkUsernameAndPassword(userName , password)){
-            return database.getUserByUsername(userName);
+        if (SystemDatabase.checkUsernameAndPassword(userName , password)){
+            return SystemDatabase.getUserByUsername(userName);
         }else {
             return null;
         }
